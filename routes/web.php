@@ -1,14 +1,16 @@
 <?php
 
 use App\Http\Middleware\CheckToken;
+use App\Http\Middleware\MiddlewareGlobal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::pattern('id', '[0-9]+'); // Define a pattern global para o parâmetro id, assim não é necessário definir em cada rota
 
 
-
-Route::middleware(['middleware-group'])->group(function() {
+// Essa ordem de declaração do array IMPORTA!!
+// poderia usar o 'myApp' que foi criado no app.php que seria um grupo de middlewares lá a ordem tambem importa 
+Route::middleware(['check-token','middleware-group'])->group(function() {
     Route::get('/middlewareInGroup', function () {
         return 'Middleware aplicado em grupo';
     });
@@ -23,7 +25,7 @@ Route::middleware(['middleware-group'])->group(function() {
 });
 
 // Rota usando middleware global
-Route::middleware([CheckToken::class])->get('/check-token', function () {
+Route::middleware([MiddlewareGlobal::class])->get('/middleware-global', function () {
     return 'Middleware Global';
 });
 

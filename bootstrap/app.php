@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\CheckToken;
+use App\Http\Middleware\MiddlewareGlobal;
 use App\Http\Middleware\MiddlewareGroup;
 use App\Http\Middleware\UserAgent;
 use Illuminate\Foundation\Application;
@@ -30,7 +31,21 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->append(CheckToken::class);
+        
+        $middleware->alias([
+            'check-token' => CheckToken::class,
+        ]);
+    })
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->append(MiddlewareGlobal::class);
+    })
+    // Criando um grupo de middlewares nas versões antigas ele é criado no Kernel.php
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->group('myApp', [
+            \App\Http\Middleware\CheckToken::class,
+            \App\Http\Middleware\UserAgent::class,
+            // outros middlewares
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

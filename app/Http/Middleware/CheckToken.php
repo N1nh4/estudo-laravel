@@ -15,6 +15,10 @@ class CheckToken
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if ($request->input('token') !== 'abc') {
+            return redirect('/');
+        }
+        
         return $next($request);
     }
 }

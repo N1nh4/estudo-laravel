@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class MiddlewareGroup
+class MiddlewareGlobal
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,6 @@ class MiddlewareGroup
      */
     public function handle(Request $request, Closure $next): Response
     {
-        dd($request);
         return $next($request);
     }
 }
