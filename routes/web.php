@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckToken;
 use App\Http\Middleware\MiddlewareGlobal;
 use Illuminate\Http\Request;
@@ -7,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::pattern('id', '[0-9]+'); // Define a pattern global para o parâmetro id, assim não é necessário definir em cada rota
 
+// O certo é usar a rota só para roteamento de rotas mesmo, o ideal é usar o controller para lidar com as regras de negócio
+Route::get('/userController', [UserController::class, 'index']);
 
 // Essa ordem de declaração do array IMPORTA!!
 // poderia usar o 'myApp' que foi criado no app.php que seria um grupo de middlewares lá a ordem tambem importa 
