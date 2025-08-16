@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InvokeController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckToken;
 use App\Http\Middleware\MiddlewareGlobal;
@@ -8,7 +9,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::pattern('id', '[0-9]+'); // Define a pattern global para o parâmetro id, assim não é necessário definir em cada rota
 
-Route::get('/userController/{id}', [UserController::class, 'funcId']);
+Route::get('/testandoInvoke', InvokeController::class);
+
+Route::get('/userControllerUser/{user}', [UserController::class, 'funcModelUser']);
+
+Route::get('/userControllerId/{id}', [UserController::class, 'funcId']);
 
 // O certo é usar a rota só para roteamento de rotas mesmo, o ideal é usar o controller para lidar com as regras de negócio
 Route::get('/userController', [UserController::class, 'index']);
