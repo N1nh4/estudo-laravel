@@ -11,8 +11,8 @@ class UserController extends Controller
         dd('index');
     }
 
-    public function funcId($id)
+    public function funcId(Request $request, $id)
     {
-        return 'ID: ' . $id;
+        dd($request->query(), $id);
     }
 }
