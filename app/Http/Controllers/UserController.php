@@ -8,6 +8,11 @@ class UserController extends Controller
 {
     public function index()
     {
-        dd('x');
+        dd('index');
+    }
+
+    public function funcId($id)
+    {
+        return 'ID: ' . $id;
     }
 }
