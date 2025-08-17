@@ -2,12 +2,26 @@
 
 use App\Http\Controllers\InvokeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserResourceModelController;
 use App\Http\Middleware\CheckToken;
 use App\Http\Middleware\MiddlewareGlobal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::pattern('id', '[0-9]+'); // Define a pattern global para o parâmetro id, assim não é necessário definir em cada rota
+
+// usersComments/{user}/comments
+// usersComments/{user}/comments/{comment}
+Route::resource('usersComments.comments', UserController::class);
+
+Route::apiResource('users', UserController::class); // ele tira as rotas de view (create e edit)
+
+Route::resources([
+    'users' => UserController::class,
+    'user-resource' => UserResourceModelController::class,
+]);
+
+Route::resource('user-resource', UserResourceModelController::class)->only('index');
 
 Route::get('/testandoInvoke', InvokeController::class);
 
