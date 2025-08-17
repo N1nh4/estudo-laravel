@@ -3,12 +3,22 @@
 use App\Http\Controllers\InvokeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserResourceModelController;
+use App\Http\Controllers\UserScopeController;
 use App\Http\Middleware\CheckToken;
 use App\Http\Middleware\MiddlewareGlobal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::pattern('id', '[0-9]+'); // Define a pattern global para o parâmetro id, assim não é necessário definir em cada rota
+
+
+Route::resourceVerbs([
+    'create' => 'criar',
+]);
+
+// posso pasar paramentro para achar o usuario pelo atributo email o padrão seria o id a função scoped não funciona mais nessa versão do laravel
+Route::get('/userScope/{user:email}', [UserScopeController::class, 'show']);
+
 
 // usersComments/{user}/comments
 // usersComments/{user}/comments/{comment}
