@@ -9,6 +9,7 @@
 <body>
     <h1>Minha primeira view usando controller</h1>
     <?php echo $user; ?>
-
+    <?php echo $user2; ?>
+    <?php echo $user3; ?>
 </body>
 </html>
