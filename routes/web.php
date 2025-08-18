@@ -4,6 +4,7 @@ use App\Http\Controllers\InvokeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserResourceModelController;
 use App\Http\Controllers\UserScopeController;
+use App\Http\Controllers\UserViewController;
 use App\Http\Middleware\CheckToken;
 use App\Http\Middleware\MiddlewareGlobal;
 use Illuminate\Http\Request;
@@ -11,7 +12,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::pattern('id', '[0-9]+'); // Define a pattern global para o parâmetro id, assim não é necessário definir em cada rota
 
+Route::get('/userView', [UserViewController::class, 'index']);
 
+// brincando com as views
+Route::get('/view', function () {
+    return view('primeiraView.view');
+});
+
+
+// mudando o nome das rotas, mas não recomendado fazer isso aqui nas rotas
 Route::resourceVerbs([
     'create' => 'criar',
 ]);
