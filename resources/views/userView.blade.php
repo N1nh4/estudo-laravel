@@ -8,5 +8,7 @@
 </head>
 <body>
     <h1>Minha primeira view usando controller</h1>
+    <?php echo $user; ?>
+
 </body>
 </html>
