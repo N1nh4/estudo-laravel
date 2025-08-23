@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\InvokeController;
+use App\Http\Controllers\UserComDbController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserResourceModelController;
 use App\Http\Controllers\UserScopeController;
@@ -11,6 +12,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::pattern('id', '[0-9]+'); // Define a pattern global para o parâmetro id, assim não é necessário definir em cada rota
+
+Route::get('/userComDb', [UserComDbController::class, 'index']);
+
+Route::get('/criarUsuario', [UserComDbController::class, 'store']);
 
 Route::get('/userView', [UserViewController::class, 'index']);
 
