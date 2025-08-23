@@ -34,4 +34,14 @@ class UserComDbController extends Controller
             'password' => bcrypt('123456'),
         ]);
     }
+
+    public function diretivaBlade() 
+    {
+        $users = User::all();
+
+        return view('diretivasDoBlade', [
+            //'users' => ['Alana Abreu'],
+            'users' => $users,
+        ]);
+    }
 }

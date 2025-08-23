@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::pattern('id', '[0-9]+'); // Define a pattern global para o parâmetro id, assim não é necessário definir em cada rota
 
+Route::get('/diretivasBlade', [UserComDbController::class, 'diretivaBlade']);
+
 Route::get('/userComDb', [UserComDbController::class, 'index']);
 
 Route::get('/criarUsuario', [UserComDbController::class, 'store']);
