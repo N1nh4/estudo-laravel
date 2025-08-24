@@ -10,6 +10,11 @@
     <h1>Usuários</h1>
 
     @include('heading')
+
+    @include('passandoVariavel', [
+        'variavel' => 'Valor da variável',
+    ])
+
     {{ count($users) }} <br>
 
     @if (count($users) === 3)
