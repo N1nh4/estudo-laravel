@@ -15,5 +15,37 @@
         <p>Eu tenho 3 usuários</p>
         
     @endif
+
+    @for($i = 0; $i <= count($users); $i++)
+        {{ $i }}
+    @endfor
+
+    <br>
+    <br>
+
+    @foreach ($users as $user)
+        {{ $user->name }}
+        <br>
+    @endforeach
+
+    <br><br>
+
+    @forelse ($users as $user)
+        {{ $user->name }}
+        <br>
+    @empty
+        <span>Sem usuários</span>
+    @endforelse
+
+    <br><br>
+
+    <?php
+        $i = 0;
+    ?>
+
+    @while ($i <= 10)
+        {{ $i++ }}
+    @endwhile
+
 </body>
 </html>
