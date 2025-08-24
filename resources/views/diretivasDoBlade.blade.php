@@ -9,6 +9,12 @@
 <body>
     <h1>Usuários</h1>
 
+    @extends('layout.default')
+
+    @section('content')
+        Meu conteúdo de usuários
+    @endsection
+
     @php
         $count = count($users);
     @endphp
@@ -17,7 +23,6 @@
 
     <br><br>
 
-    @endphp
     @include('heading')
 
     @include('passandoVariavel', [
