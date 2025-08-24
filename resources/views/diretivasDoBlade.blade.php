@@ -9,6 +9,15 @@
 <body>
     <h1>Usuários</h1>
 
+    @php
+        $count = count($users);
+    @endphp
+
+    {{ $count }}
+
+    <br><br>
+
+    @endphp
     @include('heading')
 
     @include('passandoVariavel', [
