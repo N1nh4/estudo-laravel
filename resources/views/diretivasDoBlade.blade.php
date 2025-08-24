@@ -9,6 +9,7 @@
 <body>
     <h1>Usuários</h1>
 
+    @include('heading')
     {{ count($users) }} <br>
 
     @if (count($users) === 3)
@@ -24,7 +25,10 @@
     <br>
 
     @foreach ($users as $user)
-        {{ $user->name }}
+        @if ($user->id === 1)
+            {{ $user->name }}
+        @endif
+   
         <br>
     @endforeach
 
